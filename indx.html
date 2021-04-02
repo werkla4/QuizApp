@@ -22,7 +22,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="init()">
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"aria-valuemax="100"></div>
     </div>
@@ -32,16 +32,16 @@
                 <img src="MockUp/logo.png" alt="quizz-app-logo" class="quizz-app-logo">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">HTML<div id="bar-left-html" class="left-pin"></div></a>
+                        <a class="nav-link active" href="javascript:startGame('html')">HTML<div id="bar-left-html" class="left-pin"></div></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CSS<div id="bar-left-css" class="left-pin d-none"></div></a>
+                        <a class="nav-link" href="javascript:startGame('css')">CSS<div id="bar-left-css" class="left-pin d-none"></div></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">JS<div id="bar-left-js" class="left-pin d-none"></div></a>
+                        <a class="nav-link" href="javascript:startGame('js')">JS<div id="bar-left-js" class="left-pin d-none"></div></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">JAVA<div id="bar-left-java" class="left-pin d-none"></div></a>
+                        <a class="nav-link" href="javascript:startGame('java')">JAVA<div id="bar-left-java" class="left-pin d-none"></div></a>
                     </li>
                 </ul>
             </div>
@@ -51,48 +51,48 @@
                 <span id="custom-welcome" class="welcome-to">The Awesome HTML Quiz</span>
                 <span class="welcome-challenge">Ready for the Challenge?</span>
 
-                <button type="button" class="btn btn-danger start-btn">
+                <button onclick="getNextQuestion()" type="button" class="btn btn-danger start-btn">
                     <span class="start-btn-txt">START NOW</span>
                     <img src="img/arrow-right.png" alt="arrow right" class="btn-start-arrow">
                 </button>
             </div>
 
-            <div id="play-page" class="col-10 col-right-play-page d-none">
+            <div id="question-page" class="col-10 col-right-play-page d-none">
                 <div class="circle-arrow-left circle-arrow">
                     <img src="img/left-arrow.png" alt="arrow-left" class="arrow-left">
                 </div>
                 <div class="circle-arrow-right circle-arrow">
                     <img src="img/right-arrow.png" alt="arrow-right" class="arrow-right">
                 </div>
-                <span class="play-question">Wer hat HTML erfunden?</span>
+                <span id="question-txt" class="play-question">Wer hat HTML erfunden?</span>
                 <div class="list-group">
-                    <button onclick="answer('a')" type="button"
+                    <button id="list-item-a" onclick="answer('a')" type="button"
                         class="list-group-item list-group-item-action custom-button lgi-correct-answer-color">
-                        <div class="answer-char-box acb-correct-color">
+                        <div id="answer-box-a" class="answer-char-box acb-correct-color">
                             <span>A</span>
                         </div>
-                        <span class="answer-txt">Dies ist eine AntworDies ist eine Antwort</span>
+                        <span id="answer-txt-a" class="answer-txt">Dies ist eine AntworDies ist eine Antwort</span>
                     </button>
-                    <button onclick="answer('b')" type="button"
+                    <button id="list-item-b" onclick="answer('b')" type="button"
                         class="list-group-item list-group-item-action custom-button lgi-wrong-answer-color">
-                        <div class="answer-char-box acb-wrong-color">
+                        <div id="answer-box-b" class="answer-char-box acb-wrong-color">
                             <span>B</span>
                         </div>
-                        <span class="answer-txt">Dies ist eine Antwort</span>
+                        <span id="answer-txt-b" class="answer-txt">Dies ist eine Antwort</span>
                     </button>
-                    <button onclick="answer('c')" type="button"
+                    <button id="list-item-c" onclick="answer('c')" type="button"
                         class="list-group-item list-group-item-action custom-button">
-                        <div class="answer-char-box">
+                        <div id="answer-box-c" class="answer-char-box">
                             <span>C</span>
                         </div>
-                        <span class="answer-txt">Dies ist eine Antwort</span>
+                        <span id="answer-txt-c" class="answer-txt">Dies ist eine Antwort</span>
                     </button>
-                    <button onclick="answer('d')" type="button"
+                    <button id="list-item-d" onclick="answer('d')" type="button"
                         class="list-group-item list-group-item-action custom-button">
-                        <div class="answer-char-box">
+                        <div id="answer-box-d" class="answer-char-box">
                             <span>D</span>
                         </div>
-                        <span class="answer-txt">Dies ist eine Antwort</span>
+                        <span id="answer-txt-d" class="answer-txt">Dies ist eine Antwort</span>
                     </button>
                 </div>
             </div>
@@ -113,6 +113,7 @@
                     <button type="button" class="btn btn-primary btn-lg end-page-buttons">SHARE</button>
                     <button type="button" class="btn btn-primary btn-lg end-page-buttons replay-button">REPLAY</button>
                 </div>
+                <img src="MockUp/tropy.png" alt="pocal-logo" class="pocal-logo">
             </div>
         </div>
     </div>
