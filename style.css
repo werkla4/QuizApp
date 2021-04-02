@@ -75,6 +75,73 @@ a:hover {
     position: relative;
 }
 
+.col-right-end-page{    
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    flex-direction: column;  
+    justify-content: space-between;  
+    align-items: center;
+    padding-top: 7%;
+    padding-bottom: 3%;
+}
+
+.head-evaluation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.end-page-font{
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.end-title-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.brain-logo{
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.your-score-txt{
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(246, 134, 48);
+}
+
+.score-evaluation{
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 40px;
+}
+
+.end-page-buttons{
+    width: 200px;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 1rem !important;
+}
+
+.replay-button{
+    border-color: transparent !important;
+    background-color: transparent !important;
+    color: rgb(24, 60, 232) !important;
+}
+
+.replay-button:hover{
+    color: rgba(24, 60, 232, 0.5) !important;
+}
+
+.ned-page-button-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .row {
     width: 100%;
     height: 600px;
@@ -152,6 +219,24 @@ a:hover {
 
 .list-group-item {
     margin-top: 10px;
+}
+
+.lgi-correct-answer-color{
+    background-color: rgb(183, 247, 153) !important;
+}
+
+.lgi-wrong-answer-color{
+    background-color: rgb(255, 163, 164) !important;
+}
+
+.acb-correct-color{
+    background-color: rgb(79, 190, 26) !important;
+    color: white;
+}
+
+.acb-wrong-color{
+    background-color: rgb(248, 24, 25) !important;
+    color: white;
 }
 
 .play-question {

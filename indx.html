@@ -57,7 +57,7 @@
                 </button>
             </div>
 
-            <div id="play-page" class="col-10 col-right-play-page">
+            <div id="play-page" class="col-10 col-right-play-page d-none">
                 <div class="circle-arrow-left circle-arrow">
                     <img src="img/left-arrow.png" alt="arrow-left" class="arrow-left">
                 </div>
@@ -67,15 +67,15 @@
                 <span class="play-question">Wer hat HTML erfunden?</span>
                 <div class="list-group">
                     <button onclick="answer('a')" type="button"
-                        class="list-group-item list-group-item-action custom-button">
-                        <div class="answer-char-box">
+                        class="list-group-item list-group-item-action custom-button lgi-correct-answer-color">
+                        <div class="answer-char-box acb-correct-color">
                             <span>A</span>
                         </div>
                         <span class="answer-txt">Dies ist eine AntworDies ist eine Antwort</span>
                     </button>
                     <button onclick="answer('b')" type="button"
-                        class="list-group-item list-group-item-action custom-button">
-                        <div class="answer-char-box">
+                        class="list-group-item list-group-item-action custom-button lgi-wrong-answer-color">
+                        <div class="answer-char-box acb-wrong-color">
                             <span>B</span>
                         </div>
                         <span class="answer-txt">Dies ist eine Antwort</span>
@@ -97,15 +97,22 @@
                 </div>
             </div>
 
-            <div id="end-page" class="col-10 col-right d-none">
-                <span class="welcome-to">Welcome to</span>
-                <span id="custom-welcome" class="welcome-to">The Awesome HTML Quiz</span>
-                <span class="welcome-challenge">Ready for the Challenge?</span>
-
-                <button type="button" class="btn btn-danger start-btn">
-                    <span class="start-btn-txt">START NOW</span>
-                    <img src="img/arrow-right.png" alt="arrow right" class="btn-start-arrow">
-                </button>
+            <div id="end-page" class="col-10 col-right-end-page">
+                <div class="head-evaluation">
+                    <img src="MockUp/brain result.png" alt="brain-logo" class="brain-logo">
+                    <div class="end-title-container">
+                        <span class="end-page-font">COMPLETE</span>
+                        <span id="custom-end-span" class="end-page-font">HTML QUIZ</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="your-score-txt">YOUR SCORE</span>
+                    <span id="score-evaluation" class="score-evaluation">10 / 10</span>
+                </div>
+                <div class="ned-page-button-container">
+                    <button type="button" class="btn btn-primary btn-lg end-page-buttons">SHARE</button>
+                    <button type="button" class="btn btn-primary btn-lg end-page-buttons replay-button">REPLAY</button>
+                </div>
             </div>
         </div>
     </div>
