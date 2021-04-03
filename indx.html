@@ -24,7 +24,7 @@
 
 <body onload="init()">
     <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"aria-valuemax="100"></div>
+        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
     </div>
     <div class="container container-height">
         <div class="row">
@@ -113,7 +113,7 @@
                 </div>
                 <div class="ned-page-button-container">
                     <button type="button" class="btn btn-primary btn-lg end-page-buttons">SHARE</button>
-                    <button type="button" class="btn btn-primary btn-lg end-page-buttons replay-button">REPLAY</button>
+                    <button onclick="replayGame()" type="button" class="btn btn-primary btn-lg end-page-buttons replay-button">REPLAY</button>
                 </div>
                 <img src="MockUp/tropy.png" alt="pocal-logo" class="pocal-logo">
             </div>

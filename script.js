@@ -24,7 +24,7 @@ let quizData = {
             'c': convInnerHtmlTxt('<table><tr><tt>'),
             'd': convInnerHtmlTxt('<thead><body><tr>'),
             'right_answer': 'b'
-        },
+        }
         // {
         //     'question': 'Choose the correct HTML element for the largest heading:',
         //     'a': '<h6>',
@@ -59,13 +59,26 @@ let quizData = {
         // }
     ]
 }
-let currentGame;
+let currentGame = 'html';
 let currentQuestionIndx = 0;
+let correctAnswerHistory = [];
 
 function init() {
     // show html quiz at first
     currentGame = 'html';
     startGame(currentGame);
+}
+
+function addPoint(num) {
+    correctAnswerHistory.push(num);
+}
+
+function subPoint() {
+    correctAnswerHistory = correctAnswerHistory.slice(0, -1);
+}
+
+function clearPoint() {
+    correctAnswerHistory = [];
 }
 
 function convInnerHtmlTxt(tag_text) {
@@ -123,6 +136,10 @@ function startGame(game) {
     setcurrentQuestionIndx(0);
     // show page
     showPage('welcome-page', game);
+    // clear points
+    clearPoint();    
+    // update progress bar
+    updateProgressBar();
 }
 
 function setCurrentTextInQuestionPage() {
@@ -179,13 +196,34 @@ function showQuestionAnswers() {
     setCurrentTextInQuestionPage();
     // make buttons active
     enableButtons();
+    // update progress bar
+    updateProgressBar();
+}
+
+function updateProgressBar(){
+    // calc percent
+    let n_Questions = quizData[currentGame].length;
+    let percent = Math.round(currentQuestionIndx / n_Questions * 100);
+    // update progress bar
+    document.getElementById('progress-bar').style = `width: ${percent}%`;    
+}
+
+function replayGame() {
+    // start the same game again
+    getFirstQuestion();
 }
 
 function getFirstQuestion() {
     // open question page
     showPage('question-page', currentGame);
+    // set current question indx to start
+    currentQuestionIndx = 0;
     // show new question with answer possibilitys
     showQuestionAnswers();
+    // clear points
+    clearPoint();    
+    // update progress bar
+    updateProgressBar();
 }
 
 function checkAnswer(answer_char) {
@@ -193,6 +231,8 @@ function checkAnswer(answer_char) {
     // correct answer
     if (solution_char == answer_char) {
         setItemColor(answer_char, 'correct', 'add');
+        // add point
+        addPoint(1);
     }
     // wrong answer
     else {
@@ -200,6 +240,8 @@ function checkAnswer(answer_char) {
         setItemColor(answer_char, 'wrong', 'add');
         // show/mark correct answer        
         setItemColor(solution_char, 'correct', 'add');
+        // add zero point
+        addPoint(0);
     }
 }
 
@@ -234,32 +276,62 @@ function answer(answer_char) {
     disableButtons();
 }
 
+function outputScore(){
+    // set head title
+    let GAME = currentGame.toUpperCase();
+    document.getElementById('custom-end-span').innerHTML = `${GAME} QUIZ`;
+    // output score
+    let points = getSumOfPoints();
+    let n_questions = quizData[currentGame].length;
+    document.getElementById('score-evaluation').innerHTML = `${points} / ${n_questions}`;
+    // update progress bar
+    updateProgressBar();
+}
+
+function setNextPage() {
+    // increment indx
+    currentQuestionIndx++;
+    // out of range?
+    if (currentQuestionIndx >= quizData[currentGame].length) {
+        // show end page
+        showPageHideOthers('end-page');
+        // update endpage
+        outputScore();
+    }
+    else {
+        // show next question
+        showQuestionAnswers();
+    }
+}
+
+function getSumOfPoints(){
+    // calc the summation
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    return correctAnswerHistory.reduce(reducer);
+}
+
+function setBackPage() {
+    // decrement indx
+    currentQuestionIndx--;
+    // out of range, show welcome page
+    if (currentQuestionIndx < 0) {
+        startGame(currentGame);
+    }
+    else {
+        // decrement array
+        subPoint();
+        // show next question
+        showQuestionAnswers();
+    }
+}
+
 function getNextQuestion(next_back) {
     // next Question
     if (next_back == 'next') {
-        // increment indx
-        currentQuestionIndx++;
-        // out of range?
-        if (currentQuestionIndx >= quizData[currentGame].length) {
-            // show end page
-            showPageHideOthers('end-page');
-        }
-        else {
-            // show next question
-            showQuestionAnswers();
-        }
+        setNextPage();
     }
     // Question back
     if (next_back == 'back') {
-        // decrement indx
-        currentQuestionIndx--;
-        // out of range, show welcome page
-        if (currentQuestionIndx < 0) {
-            startGame(currentGame);
-        }
-        else {
-            // show next question
-            showQuestionAnswers();
-        }
+        setBackPage();
     }
 }
