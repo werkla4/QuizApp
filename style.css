@@ -254,6 +254,10 @@ a:hover {
     text-align: center;
 }
 
+.disable-Item{
+    pointer-events: none;
+}
+
 .answer-char-box {
     height: 50px;
     width: 50px;
