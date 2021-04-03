@@ -1,6 +1,5 @@
 let quizData = {
     'html': [
-
         {
             'question': 'Choose the correct HTML element for the largest heading:',
             'a': convInnerHtmlTxt('<h6>'),
@@ -16,7 +15,7 @@ let quizData = {
             'c': convInnerHtmlTxt('^'),
             'd': convInnerHtmlTxt('*'),
             'right_answer': 'b'
-        },
+        },        
         {
             'question': 'Which of these elements are all <table> elements?',
             'a': convInnerHtmlTxt('<table><head><tfoot>'),
@@ -24,39 +23,269 @@ let quizData = {
             'c': convInnerHtmlTxt('<table><tr><tt>'),
             'd': convInnerHtmlTxt('<thead><body><tr>'),
             'right_answer': 'b'
+        },        
+        {
+            'question': 'Who is making the Web standards?',
+            'a': 'Mozilla  ',
+            'b': 'Google',
+            'c': 'Microsoft',
+            'd': 'The World Wide Web Consortium',
+            'right_answer': 'd'
+        },        
+        {
+            'question': 'What is the correct HTML for creating a hyperlink?',
+            'a': convInnerHtmlTxt('<a href="http://www.w3schools.com"> W3Schools</a>  '),
+            'b': convInnerHtmlTxt('<a name="http://www.w3schools.com"> W3Schools.com</a>'),
+            'c': convInnerHtmlTxt('<a url="http://www.w3schools.com"> W3Schools.com</a>'),
+            'd': convInnerHtmlTxt('<a>http://www.w3schools.com</a>'),
+            'right_answer': 'a'
+        },        
+        {
+            'question': 'How can you make a numbered list?',
+            'a': convInnerHtmlTxt('<ul>'),
+            'b': convInnerHtmlTxt('<list>'),
+            'c': convInnerHtmlTxt('<ol>'),
+            'd': convInnerHtmlTxt('<dl>'),
+            'right_answer': 'c'
+        },        
+        {
+            'question': 'How can you make a bulleted list?',
+            'a': convInnerHtmlTxt('<ul>'),
+            'b': convInnerHtmlTxt('<ol>'),
+            'c': convInnerHtmlTxt('<dl>'),
+            'd': convInnerHtmlTxt('<list>'),
+            'right_answer': 'a'
+        },        
+        {
+            'question': 'What is the correct HTML for making a checkbox?',
+            'a': convInnerHtmlTxt('<input type="check">'),
+            'b': convInnerHtmlTxt('<checkbox>'),
+            'c': convInnerHtmlTxt('<check>'),
+            'd': convInnerHtmlTxt('<input type="checkbox">'),
+            'right_answer': 'd'
         }
-        // {
-        //     'question': 'Choose the correct HTML element for the largest heading:',
-        //     'a': '<h6>',
-        //     'b': '<head>',
-        //     'c': '<heading>',
-        //     'd': '<h1>  ',
-        //     'right_answer': 'd'
-        // },
-        // {
-        //     'question': 'Choose the correct HTML element for the largest heading:',
-        //     'a': '<h6>',
-        //     'b': '<head>',
-        //     'c': '<heading>',
-        //     'd': '<h1>  ',
-        //     'right_answer': 'd'
-        // },
-        // {
-        //     'question': 'Choose the correct HTML element for the largest heading:',
-        //     'a': '<h6>',
-        //     'b': '<head>',
-        //     'c': '<heading>',
-        //     'd': '<h1>  ',
-        //     'right_answer': 'd'
-        // },
-        // {
-        //     'question': 'Choose the correct HTML element for the largest heading:',
-        //     'a': '<h6>',
-        //     'b': '<head>',
-        //     'c': '<heading>',
-        //     'd': '<h1>  ',
-        //     'right_answer': 'd'
-        // }
+    ],
+    'css': [
+        {
+            'question': 'What does CSS stand for?',
+            'a': 'Creative Style Sheets',
+            'b': 'Computer Style Sheets',
+            'c': 'Cascading Style Sheets',
+            'd': 'Colorful Style Sheets',
+            'right_answer': 'c'
+        },
+        {
+            'question': 'Which HTML attribute is used to define inline styles?',
+            'a': 'font',
+            'b': 'style',
+            'c': 'styles',
+            'd': 'class',
+            'right_answer': 'b'
+        },
+        {
+            'question': 'Which is the correct CSS syntax?',
+            'a': '{body;color:black;}',
+            'b': 'body:color=black;',
+            'c': 'body {color: black;} ',
+            'd': '{body:color=black;}',
+            'right_answer': 'c'
+        },
+        {
+            'question': 'How do you insert a comment in a CSS file?',
+            'a': `' this is a comment `,
+            'b': '// this is a comment //',
+            'c': '// this is a comment',
+            'd': '/* this is a comment */ ',
+            'right_answer': 'd'
+        },
+        {
+            'question': 'Which CSS property controls the text size?',
+            'a': 'font-size',
+            'b': 'text-style',
+            'c': 'font-style',
+            'd': 'text-size',
+            'right_answer': 'a'
+        },
+        {
+            'question': convInnerHtmlTxt('What is the correct CSS syntax for making all the <p> elements bold?'),
+            'a': convInnerHtmlTxt('p {font-weight:bold;}'),
+            'b': convInnerHtmlTxt('<p style="text-size:bold;">'),
+            'c': convInnerHtmlTxt('<p style="font-size:bold;">'),
+            'd': convInnerHtmlTxt('p {text-size:bold;}'),
+            'right_answer': 'a'
+        },
+        {
+            'question': 'How do you display hyperlinks without an underline?',
+            'a': 'a {text-decoration:none;}',
+            'b': 'a {underline:none;}',
+            'c': 'a {decoration:no-underline;}',
+            'd': 'a {text-decoration:no-underline;}',
+            'right_answer': 'a'
+        },
+        {
+            'question': 'How do you make each word in a text start with a capital letter?',
+            'a': 'transform:capitalize',
+            'b': 'text-transform:capitalize',
+            'c': 'text-style:capitalize',
+            'd': `You can't do that with CSS`,
+            'right_answer': 'b'
+        }
+    ],
+    'js': [
+        {
+            'question': 'Inside which HTML element do we put the JavaScript?',
+            'a': convInnerHtmlTxt('<javascript> '),
+            'b': convInnerHtmlTxt('<js>'),
+            'c': convInnerHtmlTxt('<scripting>'),
+            'd': convInnerHtmlTxt('<script> '),
+            'right_answer': 'd'
+        },
+        {
+            'question': 'How do you write "Hello World" in an alert box?',
+            'a': convInnerHtmlTxt('msg("Hello World");'),
+            'b': convInnerHtmlTxt('msgBox("Hello World");'),
+            'c': convInnerHtmlTxt('alertBox("Hello World");'),
+            'd': convInnerHtmlTxt('alert("Hello World");'),
+            'right_answer': 'd'
+        },
+        {
+            'question': 'How to write an IF statement in JavaScript?',
+            'a': convInnerHtmlTxt('if (i == 5)'),
+            'b': convInnerHtmlTxt('if i = 5 then'),
+            'c': convInnerHtmlTxt('if i == 5 then'),
+            'd': convInnerHtmlTxt('if i = 5'),
+            'right_answer': 'a'
+        },
+        {
+            'question': 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
+            'a': convInnerHtmlTxt('if i <> 5'),
+            'b': convInnerHtmlTxt('if (i <> 5)'),
+            'c': convInnerHtmlTxt('if (i != 5)'),
+            'd': convInnerHtmlTxt('if i =! 5 then'),
+            'right_answer': 'c'
+        },
+        {
+            'question': 'How does a FOR loop start?',
+            'a': convInnerHtmlTxt('for (i = 0; i <= 5)'),
+            'b': convInnerHtmlTxt('for i = 1 to 5'),
+            'c': convInnerHtmlTxt('for (i <= 5; i++)'),
+            'd': convInnerHtmlTxt('for (i = 0; i <= 5; i++)'),
+            'right_answer': 'd'
+        },
+        {
+            'question': 'What is the correct way to write a JavaScript array?',
+            'a': convInnerHtmlTxt('var colors = ["red", "green", "blue"]'),
+            'b': convInnerHtmlTxt('var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")'),
+            'c': convInnerHtmlTxt('var colors = (1:"red", 2:"green", 3:"blue")'),
+            'd': convInnerHtmlTxt('var colors = "red", "green", "blue"'),
+            'right_answer': 'a'
+        },
+        {
+            'question': 'How do you round the number 7.25, to the nearest integer?',
+            'a': convInnerHtmlTxt('rnd(7.25)'),
+            'b': convInnerHtmlTxt('Math.rnd(7.25)'),
+            'c': convInnerHtmlTxt('round(7.25)'),
+            'd': convInnerHtmlTxt('Math.round(7.25)'),
+            'right_answer': 'd'
+        },
+        {
+            'question': 'How do you find the number with the highest value of x and y?',
+            'a': convInnerHtmlTxt('Math.max(x, y)'),
+            'b': convInnerHtmlTxt('ceil(x, y)'),
+            'c': convInnerHtmlTxt('top(x, y)'),
+            'd': convInnerHtmlTxt('Math.ceil(x, y)'),
+            'right_answer': 'a'
+        },
+        {
+            'question': 'Which event occurs when the user clicks on an HTML element?',
+            'a': convInnerHtmlTxt('onclick'),
+            'b': convInnerHtmlTxt('onchange'),
+            'c': convInnerHtmlTxt('onmouseover'),
+            'd': convInnerHtmlTxt('onmouseclick'),
+            'right_answer': 'a'
+        }
+    ],
+    'java': [
+        {
+            'question': 'What is a correct syntax to output "Hello World" in Java?',
+            'a': convInnerHtmlTxt('print ("Hello World");'),
+            'b': convInnerHtmlTxt('echo("Hello World");'),
+            'c': convInnerHtmlTxt('Console.WriteLine("Hello World");'),
+            'd': convInnerHtmlTxt('System.out.println("Hello World");'),
+            'right_answer': 'd'
+        },
+        {
+            'question': 'Which data type is used to create a variable that should store text?',
+            'a': convInnerHtmlTxt('myString'),
+            'b': convInnerHtmlTxt('String'),
+            'c': convInnerHtmlTxt('string'),
+            'd': convInnerHtmlTxt('Txt'),
+            'right_answer': 'b'
+        },
+        {
+            'question': 'How do you create a variable with the numeric value 5?',
+            'a': convInnerHtmlTxt('int x = 5;'),
+            'b': convInnerHtmlTxt('x = 5;'),
+            'c': convInnerHtmlTxt('float x = 5;'),
+            'd': convInnerHtmlTxt('num x = 5'),
+            'right_answer': 'a'
+        },
+        {
+            'question': 'How do you create a variable with the floating number 2.8?',
+            'a': convInnerHtmlTxt('int x = 2.8f;'),
+            'b': convInnerHtmlTxt('byte x = 2.8f'),
+            'c': convInnerHtmlTxt('float x = 2.8f;'),
+            'd': convInnerHtmlTxt('x = 2.8f;'),
+            'right_answer': 'c'
+        },
+        {
+            'question': 'Which method can be used to find the length of a string?',
+            'a': convInnerHtmlTxt('getLength()'),
+            'b': convInnerHtmlTxt('length()'),
+            'c': convInnerHtmlTxt('getSize()'),
+            'd': convInnerHtmlTxt('len()'),
+            'right_answer': 'b'
+        },
+        {
+            'question': 'Which method can be used to return a string in upper case letters?',
+            'a': convInnerHtmlTxt('tuc()'),
+            'b': convInnerHtmlTxt('touppercase()'),
+            'c': convInnerHtmlTxt('toUpperCase()'),
+            'd': convInnerHtmlTxt('upperCase()'),
+            'right_answer': 'c'
+        },
+        {
+            'question': 'Which operator can be used to compare two values?',
+            'a': convInnerHtmlTxt('><'),
+            'b': convInnerHtmlTxt('='),
+            'c': convInnerHtmlTxt('=='),
+            'd': convInnerHtmlTxt('<>'),
+            'right_answer': 'c'
+        },
+        {
+            'question': 'How do you create a method in Java?',
+            'a': convInnerHtmlTxt('methodName.'),
+            'b': convInnerHtmlTxt('methodName[]'),
+            'c': convInnerHtmlTxt('methodName()'),
+            'd': convInnerHtmlTxt('(methodName)'),
+            'right_answer': 'c'
+        },
+        {
+            'question': 'Which keyword is used to create a class in Java?',
+            'a': convInnerHtmlTxt('MyClass'),
+            'b': convInnerHtmlTxt('className'),
+            'c': convInnerHtmlTxt('class'),
+            'd': convInnerHtmlTxt('class()'),
+            'right_answer': 'c'
+        },
+        {
+            'question': 'Which method can be used to find the highest value of x and y?',
+            'a': convInnerHtmlTxt('Math.max(x,y)'),
+            'b': convInnerHtmlTxt('Math.largest(x,y)'),
+            'c': convInnerHtmlTxt('Math.maximum(x,y)'),
+            'd': convInnerHtmlTxt('Math.maxNum(x,y)'),
+            'right_answer': 'a'
+        }
     ]
 }
 let currentGame = 'html';
@@ -82,8 +311,17 @@ function clearPoint() {
 }
 
 function convInnerHtmlTxt(tag_text) {
-    let convTxt = tag_text.replace('<', '&lt;').replace('>', '&gt;');
-    return convTxt;
+    let oldConvTxt= tag_text;    
+    let tagsInside = true;
+    // loop, if string contains < / >
+    while(tagsInside){
+        newConvText = oldConvTxt.replace('<', '&lt;').replace('>', '&gt;');
+        if(newConvText != oldConvTxt){
+            oldConvTxt = newConvText;
+        }
+        else{ tagsInside = false; }
+    }    
+    return oldConvTxt;
 }
 
 function setWelcomeText(game) {
@@ -305,6 +543,9 @@ function setNextPage() {
 }
 
 function getSumOfPoints(){
+    if(correctAnswerHistory.length == 0){
+        return 0;
+    }
     // calc the summation
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     return correctAnswerHistory.reduce(reducer);
