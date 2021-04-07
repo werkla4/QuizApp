@@ -15,7 +15,7 @@ let quizData = {
             'c': convInnerHtmlTxt('^'),
             'd': convInnerHtmlTxt('*'),
             'right_answer': 'b'
-        },        
+        },
         {
             'question': 'Which of these elements are all <table> elements?',
             'a': convInnerHtmlTxt('<table><head><tfoot>'),
@@ -23,7 +23,7 @@ let quizData = {
             'c': convInnerHtmlTxt('<table><tr><tt>'),
             'd': convInnerHtmlTxt('<thead><body><tr>'),
             'right_answer': 'b'
-        },        
+        },
         {
             'question': 'Who is making the Web standards?',
             'a': 'Mozilla  ',
@@ -31,7 +31,7 @@ let quizData = {
             'c': 'Microsoft',
             'd': 'The World Wide Web Consortium',
             'right_answer': 'd'
-        },        
+        },
         {
             'question': 'What is the correct HTML for creating a hyperlink?',
             'a': convInnerHtmlTxt('<a href="http://www.w3schools.com"> W3Schools</a>  '),
@@ -39,7 +39,7 @@ let quizData = {
             'c': convInnerHtmlTxt('<a url="http://www.w3schools.com"> W3Schools.com</a>'),
             'd': convInnerHtmlTxt('<a>http://www.w3schools.com</a>'),
             'right_answer': 'a'
-        },        
+        },
         {
             'question': 'How can you make a numbered list?',
             'a': convInnerHtmlTxt('<ul>'),
@@ -47,7 +47,7 @@ let quizData = {
             'c': convInnerHtmlTxt('<ol>'),
             'd': convInnerHtmlTxt('<dl>'),
             'right_answer': 'c'
-        },        
+        },
         {
             'question': 'How can you make a bulleted list?',
             'a': convInnerHtmlTxt('<ul>'),
@@ -55,7 +55,7 @@ let quizData = {
             'c': convInnerHtmlTxt('<dl>'),
             'd': convInnerHtmlTxt('<list>'),
             'right_answer': 'a'
-        },        
+        },
         {
             'question': 'What is the correct HTML for making a checkbox?',
             'a': convInnerHtmlTxt('<input type="check">'),
@@ -290,12 +290,147 @@ let quizData = {
 }
 let currentGame = 'html';
 let currentQuestionIndx = 0;
+let currentPage = "";
+let tempPage = "";
 let correctAnswerHistory = [];
 
 function init() {
     // show html quiz at first
     currentGame = 'html';
     startGame(currentGame);
+    // hide navbar and logo, show menu logo
+    init_mobile_menu();
+}
+
+function is_mobile_device() {
+    // check container width,  if use a mobile device 
+    let rect = document.body.getClientRects();
+    // is mobile device
+    if (rect[0].width <= 576) { return true; }
+    // no small mobile device
+    return false;
+}
+
+function NavbarAndLogo(show_hide) {
+    if (show_hide == "hide") {
+        // hide navbar and logo
+        document.getElementById('nav-bar').classList.add('disable-Item');
+        document.getElementById('nav-bar').classList.add('opacity0');
+        document.getElementById('nav-bar').classList.remove('opacity1');
+
+        document.getElementById('quiz-app-logo').classList.add('disable-Item');
+        document.getElementById('quiz-app-logo').classList.add('opacity0');
+        document.getElementById('quiz-app-logo').classList.remove('opacity1');
+    }
+    if (show_hide == "show") {
+        // show navbar and logo
+        document.getElementById('nav-bar').classList.remove('disable-Item');
+        document.getElementById('nav-bar').classList.remove('opacity0');
+        document.getElementById('nav-bar').classList.add('opacity1');
+
+        document.getElementById('quiz-app-logo').classList.remove('disable-Item');
+        document.getElementById('quiz-app-logo').classList.remove('opacity0');
+        document.getElementById('quiz-app-logo').classList.add('opacity1');
+    }
+}
+
+function MenuBar(show_hide) {
+    if (show_hide == "hide") {
+        // hide navbar and logo
+        document.getElementById('mobile-menu').classList.add('d-none');
+    }
+    if (show_hide == "show") {
+        // hide navbar and logo
+        document.getElementById('mobile-menu').classList.remove('d-none');
+    }
+}
+
+function setColumnSizeForMobileDevice(open_close_navBar){    
+    if(open_close_navBar == 'open navBar'){
+        document.getElementById('col-left').classList.remove('col-8perc');
+    }
+    if(open_close_navBar == 'close navBar'){
+        document.getElementById('col-left').classList.add('col-8perc');
+    }
+}
+
+function windowResize() {
+    init_mobile_menu();
+}
+
+function removeMobileColumnSizes(){    
+    document.getElementById('col-left').classList.remove('col-50perc');
+    document.getElementById('col-left').classList.remove('col-8perc');
+    document.getElementById('welcome-page').classList.remove('col-92perc');
+    document.getElementById('question-page').classList.remove('col-92perc');
+    document.getElementById('end-page').classList.remove('col-92perc');
+}
+
+function addMobileColumnSizes(){    
+    document.getElementById('col-left').classList.add('col-50perc');
+    document.getElementById('welcome-page').classList.add('col-92perc');
+    document.getElementById('question-page').classList.add('col-92perc');
+    document.getElementById('end-page').classList.add('col-92perc');
+}
+
+function closeNavBar(){
+    if (is_mobile_device()) {
+        // hide elements in background
+        NavbarAndLogo('hide');
+        // show menu logo
+        MenuBar('show');
+        // size column smaller
+        setColumnSizeForMobileDevice('close navBar');
+    }
+}
+
+function openNavBar(){
+    if (is_mobile_device()) {
+        // show elements in background
+        NavbarAndLogo('show');
+        // hide menu logo
+        MenuBar('hide');
+        // size column smaller
+        setColumnSizeForMobileDevice('open navBar');
+    }
+}
+
+function init_mobile_menu() {
+    if (is_mobile_device()) {
+        // create a small navBar
+        closeNavBar();
+        // 
+        addMobileColumnSizes();
+    }
+    else {
+        // show navBar
+        NavbarAndLogo('show');
+        // hide menu logo
+        MenuBar('hide');
+        // remove mobile column sizes
+        removeMobileColumnSizes();
+    }
+}
+
+function open_mobile_menu() {
+    // show navbar and log
+    // make the left col larger
+    setColumnSizeForMobileDevice('open navBar');
+
+    NavbarAndLogo('show');
+    MenuBar('hide');
+}
+
+function close_mobile_menu() {
+    // show blanc side, with background image, save last status / page
+    let lastPage = tempPage;
+    showPageHideOthers(lastPage);
+    // show navbar and log
+    // make the left col larger
+    setColumnSizeForMobileDevice('close navBar');
+
+    NavbarAndLogo('hide');
+    MenuBar('show');
 }
 
 function addPoint(num) {
@@ -311,16 +446,16 @@ function clearPoint() {
 }
 
 function convInnerHtmlTxt(tag_text) {
-    let oldConvTxt= tag_text;    
+    let oldConvTxt = tag_text;
     let tagsInside = true;
     // loop, if string contains < / >
-    while(tagsInside){
+    while (tagsInside) {
         newConvText = oldConvTxt.replace('<', '&lt;').replace('>', '&gt;');
-        if(newConvText != oldConvTxt){
+        if (newConvText != oldConvTxt) {
             oldConvTxt = newConvText;
         }
-        else{ tagsInside = false; }
-    }    
+        else { tagsInside = false; }
+    }
     return oldConvTxt;
 }
 
@@ -332,6 +467,7 @@ function setWelcomeText(game) {
 }
 
 function showPageHideOthers(page) {
+    currentPage = page;
     // hide all pages
     document.getElementById('welcome-page').classList.add('d-none');
     document.getElementById('question-page').classList.add('d-none');
@@ -359,6 +495,7 @@ function setcurrentQuestionIndx(indx) {
 }
 
 function showPage(page, game) {
+    currentPage = page;
     // show page 
     showPageHideOthers(page);
     // create wlcometext
@@ -375,9 +512,11 @@ function startGame(game) {
     // show page
     showPage('welcome-page', game);
     // clear points
-    clearPoint();    
+    clearPoint();
     // update progress bar
     updateProgressBar();
+    // for mobile device, smaller navBar
+    closeNavBar();
 }
 
 function setCurrentTextInQuestionPage() {
@@ -438,12 +577,12 @@ function showQuestionAnswers() {
     updateProgressBar();
 }
 
-function updateProgressBar(){
+function updateProgressBar() {
     // calc percent
     let n_Questions = quizData[currentGame].length;
     let percent = Math.round(currentQuestionIndx / n_Questions * 100);
     // update progress bar
-    document.getElementById('progress-bar').style = `width: ${percent}%`;    
+    document.getElementById('progress-bar').style = `width: ${percent}%`;
 }
 
 function replayGame() {
@@ -459,7 +598,7 @@ function getFirstQuestion() {
     // show new question with answer possibilitys
     showQuestionAnswers();
     // clear points
-    clearPoint();    
+    clearPoint();
     // update progress bar
     updateProgressBar();
 }
@@ -514,7 +653,7 @@ function answer(answer_char) {
     disableButtons();
 }
 
-function outputScore(){
+function outputScore() {
     // set head title
     let GAME = currentGame.toUpperCase();
     document.getElementById('custom-end-span').innerHTML = `${GAME} QUIZ`;
@@ -542,8 +681,8 @@ function setNextPage() {
     }
 }
 
-function getSumOfPoints(){
-    if(correctAnswerHistory.length == 0){
+function getSumOfPoints() {
+    if (correctAnswerHistory.length == 0) {
         return 0;
     }
     // calc the summation

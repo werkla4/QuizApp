@@ -22,15 +22,16 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body onload="init()">
+<body onload="init()" onresize="windowResize()">
     <div class="progress">
         <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
     </div>
-    <div class="container container-height">
-        <div class="row">
-            <div class="col-2 col-left">
-                <img src="MockUp/logo.png" alt="quizz-app-logo" class="quizz-app-logo">
-                <ul class="nav flex-column">
+    <div class="container">
+        <div id="game-container" class="row">
+            <div id="col-left" class="col-2 col-left">
+                <img src="img/mobile-menu.png" id="mobile-menu" onclick="open_mobile_menu()" alt="mobile-menu" class="mobile-menu-logo">
+                <img src="MockUp/logo.png" id="quiz-app-logo" alt="quiz-app-logo" class="quiz-app-logo">
+                <ul id="nav-bar" class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="javascript:startGame('html')">HTML<div id="bar-left-html" class="left-pin"></div></a>
                     </li>
@@ -46,7 +47,7 @@
                 </ul>
             </div>
             <!-- WELCOME PAGE -->
-            <div id="welcome-page" class="col-10 col-right-welcome-page d-none">
+            <div id="welcome-page" onclick="closeNavBar()" class="col-10 col-right-welcome-page d-none">
                 <span class="welcome-to">Welcome to</span>
                 <span id="custom-welcome" class="welcome-to">The Awesome HTML Quiz</span>
                 <span class="welcome-challenge">Ready for the Challenge?</span>
@@ -57,7 +58,7 @@
                 </button>
             </div>
             <!-- QUESTION PAGE -->
-            <div id="question-page" class="col-10 col-right-play-page d-none">
+            <div id="question-page" onclick="closeNavBar()" class="col-10 col-right-play-page d-none">
                 <!-- Arrows -->
                 <div onclick="getNextQuestion('back')" class="circle-arrow-left circle-arrow">
                     <img src="img/left-arrow.png" alt="arrow-left" class="arrow-left">
@@ -99,7 +100,7 @@
                 </div>
             </div>
             <!-- END PAGE -->
-            <div id="end-page" class="col-10 col-right-end-page">
+            <div id="end-page" onclick="closeNavBar()" class="col-10 col-right-end-page">
                 <div class="head-evaluation">
                     <img src="MockUp/brain result.png" alt="brain-logo" class="brain-logo">
                     <div class="end-title-container">
@@ -107,7 +108,7 @@
                         <span id="custom-end-span" class="end-page-font">HTML QUIZ</span>
                     </div>
                 </div>
-                <div>
+                <div class="score-output">
                     <span class="your-score-txt">YOUR SCORE</span>
                     <span id="score-evaluation" class="score-evaluation">10 / 10</span>
                 </div>
